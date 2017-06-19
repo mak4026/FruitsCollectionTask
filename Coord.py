@@ -12,3 +12,9 @@ class Coord:
     @property
     def y(self):
         return self._c[1]
+
+    def __add__(self, other):
+        return Coord(self.x+other.x, self.y+other.y)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
