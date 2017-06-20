@@ -1,5 +1,5 @@
 from enum import Enum
-from Coord import Coord
+from coord import Coord
 
 class Action(Enum):
     UP = Coord(0, 1)

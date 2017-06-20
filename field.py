@@ -1,7 +1,7 @@
 from typing import List
 import random
-from Coord import Coord
-from Action import Action
+from coord import Coord
+from action import Action
 
 class Field:
     field_size = 10
