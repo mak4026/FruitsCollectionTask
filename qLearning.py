@@ -4,6 +4,12 @@ from coord import Coord
 from baseAgent import BaseAgent
 from random import randrange, random, choice
 
+def all_subset(list):
+    return (set(list[x] for x in range(len(list)) if ((i >> x) & 1 == 1)) for i in range(1, pow(2, len(list))) if bin(i).count("1") <= 5)
+    # for i in range(1, pow(2, len(list))):
+        # if bin(i).count("1") <= 5:
+            # set(list[x] for x in len(list) if (i >> x) & 1 == 1)
+
 class QLearning(BaseAgent):
     EPSILON = 0.01
     ALPHA = 0.1
