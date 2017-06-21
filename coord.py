@@ -21,3 +21,6 @@ class Coord:
 
     def __hash__(self):
         return hash(self._c)
+
+    def __str__(self):
+        return str(self._c)
