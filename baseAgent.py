@@ -6,9 +6,6 @@ class BaseAgent:
     def __init__(self, field: Field):
         pass
 
-    def play_games(self) -> None:
-        pass
-
     def play_one_game(self) -> int:
         pass
 
