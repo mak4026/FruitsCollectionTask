@@ -11,7 +11,7 @@ class Environment:
 
     def play(self):
         for t in range(self.LIMIT):
-            sys.stderr.write("time: {}\n".format(t))
+            if __debug__: sys.stderr.write("time: {}\n".format(t))
             cur_field = Field(self.field.storage)
             cur_field.place_fruits()
             record = self.engine.play_one_game(cur_field)
