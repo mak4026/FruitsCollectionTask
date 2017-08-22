@@ -1,6 +1,7 @@
 from coord import Coord
 from baseAgent import BaseAgent
 from field import Field
+from typing import Callable
 import sys
 class Environment:
     def  __init__(self, engine: Callable[[Field], BaseAgent], field: Field, limit: int = 10000):
