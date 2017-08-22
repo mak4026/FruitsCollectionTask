@@ -3,7 +3,7 @@ from baseAgent import BaseAgent
 from field import Field
 import sys
 class Environment:
-    def  __init__(self, engine: BaseAgent, field: Field, limit: int = 10000):
+    def  __init__(self, engine: Callable[[Field], BaseAgent], field: Field, limit: int = 10000):
         self.field = field
         self.engine = engine(field)
         self.history = []
