@@ -3,6 +3,7 @@ from baseAgent import BaseAgent
 from field import Field
 from typing import Callable
 import sys
+import copy
 class Environment:
     def  __init__(self, engine: Callable[[Field], BaseAgent], field: Field, limit: int = 10000):
         self.field = field
@@ -15,7 +16,10 @@ class Environment:
             if __debug__: sys.stderr.write("time: {}\n".format(t))
             cur_field = Field(self.field.storage)
             cur_field.place_fruits()
+            # eval_field = copy.deepcopy(cur_field)
             record = self.engine.play_one_game(cur_field)
+            # self.engine.play_one_game(cur_field)
+            # record = self.engine.play_eval_game(eval_field)
             self.history.append(record)
 
     def dump_record(self, name = None):
