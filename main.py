@@ -43,13 +43,13 @@ e = Environment(HybridRewardArchitecture, f)
 
 e.play()
 e.dump_record()
-e2.play()
-e2.dump_record()
 print(f.storage)
 # print(e.engine.qvalue)
 #
 # with open('q-qvalue.json','w') as f:
 #     f.write(json.dumps(convert_keys(e.engine.qvalue), indent=4))
 
-view_history_graph([(e.history, e.engine.__class__.__name__),
-                    (e2.history, e2.engine.__class__.__name__)])
+view_history_graph([(e.history, e.engine.__class__.__name__)])
+# view_history_graph([(e.history, e.engine.__class__.__name__),
+#                     (e2.history, e2.engine.__class__.__name__)])
+
