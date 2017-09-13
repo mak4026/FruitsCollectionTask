@@ -18,6 +18,8 @@ class HybridRewardArchitecture(QLearning):
                     dst = s + a.value
                     if Field.in_field(dst):
                         self.qvalue[st][s][a] = 1.0
+                        if st == s:
+                            self.qvalue[st][s][a] = 0.0
 
     def play_one_step(self, field: Field, cur: Coord) -> Coord:
         frt = frozenset(field.fruits)
