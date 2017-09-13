@@ -44,10 +44,10 @@ class HybridRewardArchitecture(QLearning):
                    )
         return dst
 
-    def select_action(self, cur: Coord, frt) -> Action:
+    def select_action(self, cur: Coord, frt, eps=QLearning.EPSILON) -> Action:
         act = None
         # epsilon greedy
-        if random() < self.EPSILON:
+        if random() < eps:
             act = choice(list(Action))
             while not Field.in_field(cur + act.value):
                 act = choice(list(Action))
