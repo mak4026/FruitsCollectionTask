@@ -11,3 +11,6 @@ class BaseAgent:
 
     def play_one_step(self, field: Field) -> Coord:
         pass
+
+    def play_eval_game(self, field: Field) -> int:
+        pass
