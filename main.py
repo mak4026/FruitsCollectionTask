@@ -1,6 +1,8 @@
 from typing import List, Tuple
 from environment import Environment
 from qLearning import QLearning
+from expected_sarsa import ExpectedSarsa
+from hra import HybridRewardArchitecture
 from field import Field
 import json
 import sys
@@ -34,13 +36,15 @@ def view_history_graph(histories: List[Tuple[List[int], str]], num: int = 10) ->
 
 
 f = Field()
-e = Environment(QLearning, f)
+# e = Environment(QLearning, f)
+# e = Environment(ExpectedSarsa, f)
+e = Environment(HybridRewardArchitecture, f)
 e.play()
 e.dump_record()
 print(f.storage)
 # print(e.engine.qvalue)
 
-with open('q-qvalue.json','w') as f:
-    f.write(json.dumps(convert_keys(e.engine.qvalue), indent=4))
+# with open('q-qvalue.json','w') as f:
+#     f.write(json.dumps(convert_keys(e.engine.qvalue), indent=4))
 
 view_history_graph([(e.history, e.engine.__class__.__name__)])
