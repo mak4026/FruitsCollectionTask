@@ -12,7 +12,7 @@ def all_subset(list):
             # set(list[x] for x in len(list) if (i >> x) & 1 == 1)
 
 class QLearning(BaseAgent):
-    EPSILON = 0.05
+    EPSILON = 0.1
     ALPHA = 0.1
     GAMMA = 0.95
     TIME_LIMIT = 300
@@ -27,7 +27,10 @@ class QLearning(BaseAgent):
                 for a in Action:
                     dst = s + a.value
                     if Field.in_field(dst):
-                        self.qvalue[s][f][a] = 1.0
+                        self.qvalue[s][f][a] = 0.5
+                        if len(f) == 1 and s in f:
+                            # terminal state
+                            self.qvalue[s][f][a] = 0.0
 
     def play_one_game(self, field: Field) -> int:
         self.t += 1
