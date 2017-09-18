@@ -37,19 +37,22 @@ def view_history_graph(histories: List[Tuple[List[int], str]], num: int = 10) ->
 
 
 f = Field()
+f2 = Field(f.storage)
+print(f.storage)
 # e = Environment(QLearning, f)
-# e = Environment(ExpectedSarsa, f)
-e = Environment(HybridRewardArchitecture, f)
 
+e = Environment(HybridRewardArchitecture, f)
 e.play()
 e.dump_record()
-print(f.storage)
-# print(e.engine.qvalue)
-#
+
+e2 = Environment(ExpectedSarsa, f)
+e2.play()
+e2.dump_record()
+
 # with open('q-qvalue.json','w') as f:
 #     f.write(json.dumps(convert_keys(e.engine.qvalue), indent=4))
 
-view_history_graph([(e.history, e.engine.__class__.__name__)])
-# view_history_graph([(e.history, e.engine.__class__.__name__),
-#                     (e2.history, e2.engine.__class__.__name__)])
+# view_history_graph([(e.history, e.engine.__class__.__name__)])
+view_history_graph([(e.history, e.engine.__class__.__name__),
+                    (e2.history, e2.engine.__class__.__name__)])
 
