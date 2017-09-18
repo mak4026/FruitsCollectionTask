@@ -17,7 +17,7 @@ class HybridRewardArchitecture(QLearning):
                 for a in Action:
                     dst = s + a.value
                     if Field.in_field(dst):
-                        self.qvalue[st][s][a] = 1.0
+                        self.qvalue[st][s][a] = 0.5
                         if st == s:
                             self.qvalue[st][s][a] = 0.0
 
@@ -36,11 +36,15 @@ class HybridRewardArchitecture(QLearning):
             else:
                 r = float(reward)
 
-            max_q = max(self.qvalue[f][dst].values())
+            # We performed experiments with update targets that estimate an optimal policy (Equation 7)
+            # and update targets that evaluate a uniformly random policy (using Equation 8)
+            # max_q = max(self.qvalue[f][dst].values())
+            eval_value = sum(self.qvalue[f][dst].values())/len(self.qvalue[f][dst].values())
             self.qvalue[f][cur][act] = (self.qvalue[f][cur][act]
                     + QLearning.ALPHA
                     * (r
-                       + QLearning.GAMMA * max_q
+                       # + QLearning.GAMMA * max_q
+                       + QLearning.GAMMA * eval_value
                        - self.qvalue[f][cur][act]
                       )
                    )
